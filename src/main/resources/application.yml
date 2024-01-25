@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    url: jdbc:mysql://10.169.82.66:3306/mtp
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    show-sql: true
+    type: com.alibaba.druid.pool.DruidDataSource
+mybatis:
+  #配置 mapper 文件路径
+  mapper-locations: classpath:mapper/*.xml
+  #配置 mapper 中实体类的路径
+  type-aliases-package: com.micro.service.galaxycore.pojo
+server:
+  servlet:
+    context-path: /galaxy/core/api/rest/v1
+
