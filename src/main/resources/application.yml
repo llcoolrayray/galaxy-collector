@@ -1,4 +1,21 @@
+server:
+  port: 62000
+  servlet:
+    context-path: /galaxy/collector/api/rest/v1
 spring:
+  application:
+    name: galaxy-collector
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 10.169.82.32:8848
+      config:
+        server-addr: ${spring.cloud.nacos.discovery.server-addr}
+        file-extension: properties
+  # spring cloud 2021 版本之后，需要用以下方式导入 nacos 的配置文件
+  config:
+    import:
+      - nacos:${spring.application.name}.properties?refresh=true
   datasource:
     url: jdbc:mysql://10.169.82.66:3306/mtp
     username: root
@@ -10,8 +27,6 @@ mybatis:
   #配置 mapper 文件路径
   mapper-locations: classpath:mapper/*.xml
   #配置 mapper 中实体类的路径
-  type-aliases-package: com.micro.service.galaxycore.pojo
-server:
-  servlet:
-    context-path: /galaxy/core/api/rest/v1
+  type-aliases-package: com.micro.service.galaxycollector.pojo
+
 
